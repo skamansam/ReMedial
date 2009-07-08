@@ -1,0 +1,37 @@
+<h1>Preferences</h1>
+<% form_for(@user) do |f| %>
+	<%= f.error_messages %>
+	<% if @users %>
+		<% @users.each do |user| %>
+    		<%=h user.uname %>
+    		<%=h user.pwd %>
+		    <%=h user.fname %>
+		    <%=h user.mname %>
+		    <%=h user.lname %>
+		    <%=h user.email %>
+		    <%=h user.homepage %>
+		    <%=h user.address1 %>
+		    <%=h user.address2 %>
+		    <%=h user.country %>
+		    <%=h user.state %>
+		    <%=h user.city %>
+		    <%=h user.zip %>
+		    <%=h user.phone %>
+		    <%=h user.cell %>
+		    <%=h user.avatar %>
+		    <%=h user.group %>
+		    <%=h user.dir %>
+		    <%=h user.permission %>
+		    <%=h user.created %>
+		<% end %>
+	<% end %>
+ 	<p>
+ 		<%= f.submit 'Update' %>
+ 	</p>
+</form>
+<% if admin? %>
+	<%= link_to 'Delete User', user, :confirm => 'Are you sure?', :method => :delete %><% end %>
+	<br/>
+	<%= link_to 'New user', new_user_path %>
+<% end %>
+	

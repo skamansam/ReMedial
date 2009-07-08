@@ -1,0 +1,28 @@
+
+
+Index:
+Users, Media, Lists, Requests, Preferences, Ratings
+
+
+Users:
+uname pwd fname mname lname email homepage address1 address2 country state city zip phone cell avatar group dir(null=users/uname) permission
+
+
+Media:
+owner(users.id) type permission path rating
+
+
+Lists: 
+title body parent(Lists.id) complete(%) attachment
+
+
+Requests: 
+user(Users.id) type 
+
+
+Ratings:
+user media_id(Media.id) ranking
+
+
+
+

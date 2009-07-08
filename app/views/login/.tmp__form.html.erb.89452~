@@ -1,0 +1,8 @@
+<% if !session[:username] %>
+<%= form_tag :controller => "application", :action => "authenticate" %>
+Login: <%= text_field("loginform","user_name", :size => '20') %> 
+Password: <%= password_field("loginform","user_pwd", :size => '20') %>
+<input type="submit" value="Login!"/>
+<% else %>
+Welcome, <%= session[:username] %> <% link_to "Log Out", :action => logout%>
+<% end %>

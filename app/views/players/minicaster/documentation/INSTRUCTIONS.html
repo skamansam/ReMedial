@@ -1,0 +1,179 @@
+<html>
+<head>
+<title>FMP256 Flash Audio playhead - Minicaster FREE INSTRUCTIONS</title>
+<style type="text/css">
+body {
+        background: #b0b0ff;
+        color: #000;
+}
+.links {
+	text-align: center;
+}
+a {
+        color: #600000;
+        text-decoration: underline;
+}
+.samplecode {
+        white-space: pre;
+        color: #000090;
+        font-family: courier;
+}
+</style>
+</head>
+<body>
+<h1>Instructions : DNeX Flash Audio playhead : Minicaster FREE</h1>
+<p>
+<a href="EULA.html">
+<strong>It is important that you read and agree to this License Agreement before using your software</a></strong>.
+</p>
+<p>
+Many thanks for choosing to use a product from Draftlight Networks. Your software is part of our range 
+of FMP256 Flash Audio Playheads, and plays MP3 format webcasts from an Icecast2 or Shoutcast server. All of the startup 
+settings are controlled by an XML configuration file. The playhead itself is a single, small Flash 8 document 
+that can be embedded into your website with ease, and is compatible with any web browser that supports the 
+Flash Player 8 or higher plugin. The streaming server does not need to be running on the same webserver as 
+Minicaster.
+</p>
+
+<p>Minicaster is specifically designed to play "client pull webcasts" - these supply a continual, or at least 
+a very long, MP3 audio file over HTTP. The webcasting server (such as Icecast2) synchronises the contents of the 
+MP3 file to a stream, and throttles the download to a sensible speed. Since the playhead is only acting on one 
+file there is no concept of a 'playlist' or 'tracks', even though the webcast itself may contain many individual 
+pieces of music. It is important to remember that the MP3 webcast file does not contain information about the 
+currently playing track title, or the total duration of the webcast.</p>
+
+<h4>How webcasts work with Flash Player</h4>
+<p>
+There is a fundamental problem with playing client-pull webcasts on Flash Player, as the sound engine used by 
+Flash makes several assumptions (such as the idea an MP3 file is limited in length) that don't apply. Because 
+of this, a lot of the memory management systems used by Flash Player fail when asked to play a webcast - the 
+sound engine tries to load the entire MP3 webcast into memory, and as it's very long eventually your computer 
+will run out of free RAM. What happens then is unpredictable, but usually bad.
+</p>
+<p>Minicaster gets round this problem by periodically dumping the downloaded data and crossfading into a new 
+copy. The delay between these crossfades is set in your configuration file, and will be based on the bandwidth 
+of your webcast - typically the playhead will crossfade a few times an hour. There are still some issues that 
+even we can't solve, such as measuing the actual free memory on a client's computer (for security reasons Flash 
+Player doesn't have access to system resources) - so the reliability and stability of the playback depends on 
+estimating your audience's computer specifications. If you make a typical assumption of 10MB per downloaded 
+section, it will be fine unless someone tries to run the playhead on a cellphone! This issue is fundamental to 
+the way webcasting operates - the server supplies a file that in theory can't ever be downloaded in full, but 
+doesn't care if you try. The only way to achieve truly never-ending streams is to use a professional streaming 
+server such as Adobe Media Server, in which case the audio is sent 'live' and never stored as an MP3.
+</p>
+<h4>The Dual-stream browser bug</h4>
+<p>
+The current version of Flash Player has a fault that prevents access to a second 'live' Icecast stream when one 
+is already being processed. This affects Flash under Firefox and some other minor browsers. When Minicaster detects 
+this problem it switches automatically to a simpler memory management mode, where the audio sections are not 
+crossfaded. This will introduce a second or two of silence into the stream on each fade event, but this will 
+have minimal impact on the listener given these events happen only every few minutes. Despite efforts to 
+resolve this audio bug, it is currently not possible to bypass the block on a second stream. The same fallback 
+method is also used if Minicaster connects to a server at maximum listener capacity, so it can retain a stream 
+without requiring two listener positions. You can force Minicaster to use the basic non-fading mode by setting 
+a parameter in the config file.
+</p>
+<p><strong>
+Icecast2 allows sending music in non-MP3 formats (such as Ogg Vorbis or AAC). <u>Flash Player can't understand anything 
+except MP3 files</u> - so before delivering a webcast through this playhead you need to check the format is pure MP3. 
+If Minicaster detects a non-MP3 stream it will stop playback. You also need to ensure that the MP3 tracks are 
+encoded at a 'standard' bitrate. For information on what audio bitrates Flash supports, 
+<a href="http://www.draftlight.net/dnex/mp3player/mp3format.php">refer to our guide</a>.</strong></p>
+
+<p><strong>For Icecast2 streams, if you deliver mono or stereo MP3 data at 32kbps, 64kbps, 96kbps or 128kbps you 
+will usually be fine. Streams at a rate lower than 32kbps or at an unusual bitrate will play incorrectly (at the 
+wrong speed).</strong></p>
+<hr />
+
+<h3>What your website users will see and do...</h3>
+<p>
+When the web page loads, Minicaster will activate and check the settings in the configuration file. The playhead 
+will show an error and disable itself if the configuration file or the webcast mount point cannot be opened. 
+If a user has an older version of the Flash player, they will be prompted to update.</p>
+<p>
+When the playhead first starts opening a stream, it will begin playback as soon 
+as enough data has loaded - this usually means about 2 seconds of audio. Each time 
+the playhead dumps memory in XF mode there may be an extremely small change in the audio position, 
+but very few users will even notice it. In basic mode there will be a second or two of silence, but 
+remember that for many webcast servers there are brief periods of silence caused by the server 
+capacity or network usage which are perfectly normal, and listeners are used to the effect.
+</p>
+<p>
+Remember - the playhead ONLY accepts native MPEG encoded MP3 files. It will reject any other audio format, 
+video files, or Microsoft ADP encoded MP3s.
+</p>
+
+<h2>EDITING YOUR MINICASTER CONFIG FILE</h2>
+<p>
+The XML configuration file will usually be loaded from the same website folder as the SWF file, and using the same name as 
+the playhead (but with an XML extension). For example, if the Minicaster playhead is available at
+<br /><br />
+<strong>http://www.mywebsite.xx/radio/minicaster.swf</strong>
+<br /><br />
+then the configuration file should be at 
+<br /><br />
+<strong>http://www.mywebsite.xx/radio/minicaster.xml</strong>
+<br /><br />
+The file contains XML data that defines all of the startup parameters for the playhead (autostart, 
+volume, etc.) and of course the location of the webcast itself. The configuration file must be 
+present, and must have all the settings defined, or the playhead will stop and display an error.
+</p>
+<h3><a href="CONFIG.html">Click here for instructions on editing your config file</a></h3>
+
+<h2>UPLOADING YOUR MINICASTER-EMBEDDED WEB PAGE</h2>
+<p>
+First, if you want to rename the playhead SWF file then change the name of both the 
+SWF file and the XML configuration file as well - then open the configuration file in a 
+text editor (Notepad, VI, etc. - NOT a word processor) and edit it to define your startup 
+options and webcast as we have described <a href="CONFIG.html">here</a>.
+</p>
+<p>
+Now, all you need to do is upload the SWF and XML file to your webserver, then put the 
+code into your web pages to show the Flash player on your site:-
+</p>
+<h3>Embedding the playhead into a web page</h3>
+<p>
+We have included an example page, called <a href="../EXAMPLE.html">EXAMPLE.html</a>, which shows you the 
+code for your chosen design. You can edit that file, or copy the entire OBJECT section into 
+your own page. Our example page uses the Flash Stirfry method of defining a Flash object inside HTML, 
+which offers the best compatibility and search engine performance for our software. A second example 
+page, <a href="../EXAMPLE2.html">EXAMPLE2.html</a>, shows the playhead embedded without any of the 
+JavaScript control and debugging systems, and is the bare minimum required to run Minicaster FREE.
+</p>
+<hr />
+<h2>ADVANCED INSTRUCTIONS</h2>
+<p><strong>
+For information on changing the configuration file location and debugging the playhead, 
+<a href="ADVANCED.html">click here</a>.</strong>
+</p>
+<hr />
+<h2>IMPORTANT NOTICE: COPYRIGHT OF AUDIO FILES</h2>
+<p>
+You are solely and entirely reponsible for obtaining the permissions, licenses and 
+agreements needed to play audio files on your website. We accept no liability for 
+the music you play, and any license or intellectual property infringements you may 
+make. ALL commercial music is copyrighted and you MUST buy a license from the 
+songwriter, record label and/or Performer Rights agency before you can put music 
+on a website, unless you are the sole owner of all such rights. Normally if you have 
+written the music yourself, including all scores and lyrics, have performed it 
+yourself and have not signed any agreement with a record label, you are the rights 
+owner and need no extra permission. For cover versions or sampled works, you DO need 
+permission. For detailed info on copyright and licenses, see our online guides at 
+<a href="http://bandfoundry.draftlight.net/resources/copyright/">
+http://bandfoundry.draftlight.net/resources/copyright/</a>. Draftlight do not supply 
+webcast licenses on behalf of our clients and will not assist in obtaining them.
+</p>
+<hr />
+<div class="links">
+<a href="INSTRUCTIONS.html">INSTRUCTIONS</a> :: 
+<a href="EULA.html">EULA</a> :: 
+<a href="CONFIG.html">CONFIG FILES</a> :: 
+<a href="ADVANCED.html">Advanced Topics</a> :: 
+<a href="ER.html">extendedReporting Engine</a> :: 
+<a href="../EXAMPLE.html">EXAMPLE</a>
+<p>
+<a href="http://www.draftlight.net/dnex/minicaster/">All content &copy;2005-2007 Draftlight 
+Networks all rights reserved</a>.</p>
+</div>
+</body>
+</html>

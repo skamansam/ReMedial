@@ -1,0 +1,15 @@
+
+<!-- login/_form.html.erb -->
+<div id="login_form">
+	<% if !session[:username] %>
+		<%= form_tag :controller => "login", :action => "authenticate" %>
+		<span id="login_name">Login: <%= text_field("loginform","user_name", :size => '10') %></span>
+		<span id="login_pwd">Password: <%= password_field("loginform","user_pwd", :size => '10') %></span>
+		<span id="login_pwd" class="img"><input type="image" src="<%= @themedir %>/images/actions/small/login.png" value="Login!"/></span>
+		</form>
+	<% else %>
+		Welcome, <%= session[:username] %> 
+		<%= link_to "Log Out", :controller => 'login', :action => 'logout' %>
+	<% end %>
+</div>
+<!--/ login/_form.html.erb -->

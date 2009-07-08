@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>ReMedial : <%= controller.controller_name.capitalize %></title>
+  <%= stylesheet_link_tag 'scaffold' %>
+<%= javascript_include_tag 'prototype' %>
+<%= javascript_include_tag 'effects' %>
+<%= javascript_include_tag 'application' %>
+</head>
+<body>
+<div id="envelope">
+	<div id="header">
+		<div id="header_logo"><img src="" alt="logo"/></div>
+		<div id="header_name">ReMedial</div>
+		<div id="header_subtitle">Any Media. Anywhere</div>
+		<div id="icon_nav">
+			<%= link_to image_tag("/themes/cryo64/home.png", :border=>'none',:title=>"Home"), :controller => 'users', :action => 'index' %>
+		</div>
+		<%= render :partial => 'login/form' %>
+	</div>
+	<div id="content">
+		<p style="color: green">Theme: deafault<%= flash[:notice] %></p>
+		<%= yield %>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<html>
+<head>
+<title>FMP256 Flash Audio playhead - Minicaster PRO-ICE INSTRUCTIONS</title>
+<style type="text/css">
+body {
+        background: #d0d0ff;
+        color: #000;
+}
+.links {
+	text-align: center;
+}
+a {
+        color: #600000;
+        text-decoration: underline;
+}
+.samplecode {
+        white-space: pre;
+        color: #000090;
+        font-family: courier;
+}
+</style>
+</head>
+<body>
+<h1>Instructions : DNeX Flash Audio playhead : Minicaster FREE</h1>
+<h2>THE CONFIGURATION FILE</h2>
+
+<p>
+The XML configuration file will usually be loaded from the same website folder as the SWF file, and using the same name as 
+the playhead (but with an XML extension). For example, if the Minicaster playhead is available at
+<br /><br />
+<strong>http://www.mywebsite.xx/music/minicaster.swf</strong>
+<br /><br />
+then the configuration file should be at 
+<br /><br />
+<strong>http://www.mywebsite.xx/music/minicaster.xml</strong>
+<br /><br />
+The file contains XML data that defines all of the startup parameters for the playhead (autostart, 
+volume, etc.) and of course the location of the webcast itself. The configuration file must be 
+present, and must have a webcast defined, or the playhead will stop and display an error.
+</p>
+<p>
+A sample configuration file is shown below:-
+</p>
+<div class="samplecode">
+&lt;?xml version="1.0" encoding="iso-8859-1" ?&gt;
+&lt;config version="1s" xmlns="http://www.draftlight.net/dnex/config/ns/0/"&gt;
+&lt;mp3cast&gt;
+  &lt;mount&gt;http://my.icecast.xx:8000/live/&lt;/mount&gt;
+  &lt;website&gt;http://my.website.xx&lt;/website&gt;
+  &lt;title&gt;Title of my radio station&lt;/title&gt;
+&lt;/mp3cast&gt;
+&lt;init autoplay="0" volume="80" reload="5" xfade="0" /&gt;
+&lt;/config&gt;
+</div>
+<ul>
+<li>The first two lines are essential, and defines the file XML namespace. Please don't alter them.</li>
+<li>Lines 3 to 7 define an mp3cast 'mount point', and are required.</li>
+<li>Line 8 defines startup settings, and is required.</li>
+<li>Line 9 closes the config structure, and is required.</li>
+</ul>
+<h4>The &lt;init&gt; tag</h4>
+<p>
+The parameters in the init tag are as follows:-
+</p>
+<ul>
+<li><strong>autoplay</strong> A single digit ["0" or "1"] defines if the playhead starts playing track 1 as soon as it loads. Default is "0" (autoplay off).</li>
+<li><strong>volume</strong> An integer ["0" to "100"] setting the initial playback volume. Default value "100".</li>
+<li><strong>reload</strong> An integer ["3" to "30"] setting the number of minutes between stream crossfades. Default value "5".</li>
+<li><strong>xfade</strong> An single digit ["0" or "1"] defines if XF crossfade mode is on or off (see below). Default value "1" (XF active).</li>
+</ul>
+<h4>The &lt;mp3cast&gt; structure</h4>
+<p>
+The &lt;mp3cast&gt; tag has several child tags, some are optional and some are not:-
+<ul>
+<li><strong>mount</strong> The mount point of your webcast (NOT the playlist file location!). The mount point is the web address that points 
+to your MP3 stream itself. In Icecast this might be 'http://my.server.com:8000/live' - you can check this URL is valid by trying to 
+open it in an audio player such as Winamp.</li>
+<li><strong>website</strong> A link to a website giving information about the webcast. You can omit this tag if you want.</li>
+<li><strong>title</strong> The human-readable name of the radio station, for display on the Minicaster screen.</li>
+</ul>
+</p>
+<hr />
+<div class="links">
+<a href="INSTRUCTIONS.html">INSTRUCTIONS</a> :: 
+<a href="EULA.html">EULA</a> :: 
+<a href="CONFIG.html">CONFIG FILES</a> :: 
+<a href="ADVANCED.html">Advanced Topics</a> :: 
+<a href="ER.html">extendedReporting Engine</a> :: 
+<a href="../EXAMPLE.html">EXAMPLE</a>
+<p>
+<a href="http://www.draftlight.net/dnex/minicaster/">All content &copy;2005-2007 Draftlight 
+Networks all rights reserved</a>.</p>
+</div>
+</body>
+</html>

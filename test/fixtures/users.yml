@@ -1,0 +1,45 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  uname: MyString
+  pwd: MyString
+  fname: MyString
+  mname: MyString
+  lname: MyString
+  email: MyString
+  homepage: MyString
+  address1: MyString
+  address2: MyString
+  country: MyString
+  state: MyString
+  city: MyString
+  zip: MyString
+  phone: MyString
+  cell: MyString
+  avatar: MyString
+  group: MyString
+  dir: MyString
+  permission: MyString
+  created: 2009-06-21 01:07:50
+
+two:
+  uname: MyString
+  pwd: MyString
+  fname: MyString
+  mname: MyString
+  lname: MyString
+  email: MyString
+  homepage: MyString
+  address1: MyString
+  address2: MyString
+  country: MyString
+  state: MyString
+  city: MyString
+  zip: MyString
+  phone: MyString
+  cell: MyString
+  avatar: MyString
+  group: MyString
+  dir: MyString
+  permission: MyString
+  created: 2009-06-21 01:07:50

@@ -1,0 +1,126 @@
+<html>
+<head>
+<title>Draftlight DNeX extendedReporting Engine : INSTRUCTIONS</title>
+<style type="text/css">
+body {
+        background: #b0b0ff;
+        color: #000;
+}
+.links {
+	text-align: center;
+}
+a {
+        color: #600000;
+        text-decoration: underline;
+}
+.samplecode {
+        white-space: pre;
+        color: #000090;
+        font-family: courier;
+}
+</style>
+</head>
+<body>
+<h1>Instructions : extendedReporting Engine</h1>
+<p>
+All our playheads include the Draftlight extendedReporting engine. If developers try to debug the 
+playhead via the Flash IDE, they can hit problems with access to the configuration files and 
+media due to the security sandbox. If you don't have the Flash IDE you still want to be able to watch 
+the playhead in action, so you can work out what's causing problems with your configuration. Normally 
+in Flash this would be impossible, however our playheads report all their actions and errors via the 
+external API, so a detailed log of progress can be collected by JavaScript as the playhead runs live 
+on your server, or locally from a file on your computer. There's no need to change the SWF file in 
+any way.</p>
+<p>
+The <a href="../DEBUG-EXAMPLE.html">DEBUG EXAMPLE webpage</a> supplied with your software includes 
+the script sections for extendedReporting. To add the display to your own webpage you just need to 
+add the following JavaScript to your page's HEAD section:-
+</p>
+<div class="samplecode">
+&lt;script language="JavaScript"&gt;
+&lt;!--
+    function xtrace(_st) {
+	document.traceForm.text.value += _st + '\n';
+    }
+// --&gt;
+&lt;/script&gt;
+</div>
+<p>Then, somewhere out of the way on your page, add a textarea like this:-</p>
+<div class="samplecode">
+&lt;form name="traceForm" method="get" action=""&gt;
+&lt;textarea name="text" rows="15" cols="80"&gt;&lt;/textarea&gt;&lt;/form&gt;
+</div>
+<p>
+Now you can see exactly what's going on, or what's going wrong! Remember to remove the above code 
+before letting your visitors loose on your page - it's not a security risk, but it may confuse them to 
+see all the strange messages.
+</p>
+<h2>extendedReporting codes</h2>
+<p>
+Each message sent from the playhead starts with a three-digit numeric code. It allows your JavaScript to read 
+the messages and take action based on them - for example if the playhead reports the name of a track, 
+your JavaScript can load an image or some information about that artist. If the playhead stops due to 
+an error, you could even redirect your visitors to another page.
+</p>
+<p>
+For example, here's a script that will open an 'alert' box if the Now Playing data is missing:-
+</p>
+<div class="samplecode">
+&lt;script language="JavaScript"&gt;
+&lt;!--
+    function xtrace(_st) {
+	if (_st.substring(0,3)=='202') alert('Sorry - I cannot display track information for this stream');
+    }
+// --&gt;
+&lt;/script&gt;
+</div>
+<p>Here's the full list of message codes broadcast by your playhead:-</p>
+<table border="1">
+<tr><th>Code number</th><th>Message</th></tr>
+<tr><td>100</td><td>Wakeup and playhead loaded successfully</td></tr>
+<tr><td>103</td><td>Mountpoint definition found in config file</td></tr>
+<tr><td>104</td><td>PLS playlist file definition found in config file</td></tr>
+<tr><td>105</td><td>Info website definition found in config file</td></tr>
+<tr><td>106</td><td>Stream title definition found in config file</td></tr>
+<tr><td>107</td><td>URL for now-playing data found in config file</td></tr>
+<tr><td>108</td><td>Volume has been changed by a program action (not by the UI slider)</td></tr>
+<tr><td>109</td><td>Slot status report (generated during the first 10 secs of audio)</td></tr>
+<tr><td>110</td><td>Shoutcast DNAS-style playlist file loaded from a remote server</td></tr>
+<tr><td>111</td><td>Shoutcast DNAS-style playlist file parsed OK</td></tr>
+<tr><td>112</td><td>JavaScript 'setconfig' function has been called</td></tr>
+<tr><td>113</td><td>JavaScript 'setconfig' and/or 'play' functions have been registered for use</td></tr>
+<tr><td>114</td><td>Config file loaded and parsed OK</td></tr>
+<tr><td>120</td><td>Audio stream is being loaded from the mount URL</td></tr>
+<tr><td>121</td><td>Audio stream has loaded OK</td></tr>
+<tr><td>150</td><td>Reload event in XFade mode has begun</td></tr>
+<tr><td>151</td><td>Reload event in XFade mode has completed OK</td></tr>
+<tr><td>201</td><td>Change in reported song title - message format is <strong>201:SongTitle=xxxxxxx<strong></td></tr>
+<tr><td>202</td><td>The URL for now-playing data is unavailable or the data is bad</td></tr>
+<tr><td>501</td><td>Audio playback has been stopped (a reason will be given in square brackets)</td></tr>
+<tr><td>502</td><td>MP3 stream failed to load (server down or network problems)</td></tr>
+<tr><td>503</td><td>Trying the next entry in the playlist of mounts</td></tr>
+<tr><td>504</td><td>Stream bad format (under 10kb, so probably returned an HTML page instead of an MP3)</td></tr>
+<tr><td>505</td><td>Stream bad format (over 10kb but unplayable - probably a non-MP3 audio file)</td></tr>
+<tr><td>506</td><td>Config file format bad (an XML formatting error or a missing/unreachable URL)</td></tr>
+</table>
+<p>
+The exact order of the messages posted may vary where several tasks are running simultaneously. It is possible to 
+use a JavaScript/AJAX script to pass messages back to your server, for example to collect error data, but 
+normally they are retained within the browser and used only for initial debugging of your setup. Running important 
+actions based on the extendedReporting messages on a live website may lead to problems if your visitors have 
+JavaScript disabled.
+</p>
+<hr />
+<div class="links">
+<a href="INSTRUCTIONS.html">INSTRUCTIONS</a> :: 
+<a href="EULA.html">EULA</a> :: 
+<a href="CONFIG.html">CONFIG FILES</a> :: 
+<a href="ADVANCED.html">Advanced Topics</a> :: 
+<a href="ER.html">extendedReporting Engine</a> :: 
+<a href="../EXAMPLE.html">EXAMPLE</a>
+<p>
+<a href="http://www.draftlight.net/dnex/minicaster/">All content &copy;2005-2007 Draftlight 
+Networks all rights reserved</a>.</p>
+</div>
+</body>
+</html>

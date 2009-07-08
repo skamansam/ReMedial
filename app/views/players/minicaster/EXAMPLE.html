@@ -1,0 +1,133 @@
+<html>
+<head>
+<title>Demo web page for FMP256 Flash music playhead - Minicaster FREE</title>
+<style type="text/css">
+
+html
+    {
+    font-size: 100%;
+    }
+body
+    {
+    margin: 5px;
+    height: 100%;
+    padding: 0;
+    color: #000020;
+    font: 1em Helvetica, "Lucida Sans Unicode", Arial, Tahoma, sans-serif;
+    background: #fff;
+    text-align: left;
+    }
+a
+    {
+    color: #000090;
+    text-decoration: none;
+    }
+a:hover, a:active, a:focus 
+    {
+    color: #303090;
+    text-decoration: underline;
+    }
+h1
+    {
+    text-align: left;
+    font: 2em Helvetica, Arial, Tahoma, sans-serif;
+    margin: 10px;
+    }
+#copyright p
+    {
+    font: 0.8em Helvetica, Arial, Tahoma, sans-serif;
+    color: #909090;
+    text-align: right;
+    padding: 0 20px 0 0;
+    }
+.left 
+    {
+    float: left;
+    padding: 5px;
+}
+</style>
+</head>
+<body>
+<h1>FMP256 Flash Music Playhead :: Minicaster FREE</h1>
+<p>
+The playhead will be shown below, embedded into a section of random text. You can use this page as a basis 
+for your own site, just open it in your normal web editor to extract the Javascript and Flash 'object' 
+sections.</p>
+
+<h2>Playhead embedded using the Flash Stirfry technique</h2>
+<div class="left">
+
+<!-- EXTRACT THIS SECTION -->
+<object id="fmp256" type="application/x-shockwave-flash" data="minicaster.swf" width="180" height="70">
+  <param name="movie" value="minicaster.swf" />
+  <param name="wmode" value="transparent" />
+  <param name="allowScriptAccess" value="always" />
+   <div class="stirfry">
+   <h4>Minicaster Radio Playhead</h4>
+   <p>To listen you must <a href="http://www.macromedia.com/go/getflashplayer/" 
+   title="Click here to install the Flash browser plugin from Macromedia">install Flash Player</a>. Visit 
+   <a href="http://www.draftlight.net/dnex/mp3player/minicaster/" title="Draftlight Networks">Draftlight Networks</a> 
+   for more info.</p></div>
+</object>
+<script language="JavaScript">
+<!--
+    function getObject(_x) {
+	// used to locate the Flash asset in the DOM. Works reliably on FF, IE and Safari.
+	return document.getElementById(_x);
+    }
+    window.onunload = function() {
+	// stops audio when browser moves to a new page or closes. Helps stop a crash in Safari.
+        getObject("fmp256").playpause(0);
+    }
+    function setconfig(_url) {
+	// sends Flash a new config file URL.
+	getObject("fmp256").setconfig(_url);
+    }
+    function toggle() {
+	// changes between play and pause. To force audio to stop use '0' in the function.
+	getObject("fmp256").playpause(1);
+    }
+
+	// the following two functions should be removed for a public production website.
+    function xtrace(_st) {
+	// sends text from Flash to the on-screen debugging display (if used)
+  	getObject("xtracef").t.value += _st + '\n';
+    }
+    function clearTrace() {
+	// removes all text from the debugging display (if used)
+	getObject("xtracef").t.value = "";
+    }
+// -->
+</script>
+<!-- END OF EXTRACT -->
+
+</div>
+<p>
+The standard dimensions of the playhead are 180 x 70. Full instructions on installing your playhead, 
+creating a configuration file and changing the playhead startup schemes are given in the 
+<a href="documentation/INSTRUCTIONS.html">Documentation Folder</a>.
+</p>
+<p>
+For our full catalog of designs for MP3 and video delivery, visit our website at 
+<a href="http://www.draftlight.net/dnex/mp3player/" title="Visit us">http://www.draftlight.net/dnex/mp3player/
+</a>
+</p>
+<h2>Talking to the playhead with JavaScript</h2>
+<p><a href="#" onClick="toggle()">This link</a> uses JavaScript to toggle between play and pause</p>
+<p><a href="#" onClick="setconfig('documentation/config2.xml')">This link</a> uses JavaScript to change the configuration file</p>
+
+<h3>extendedReporting system</h2>
+<p>The text area below shows information sent from Minicaster every time something happens. You would normally not 
+include this on a public website, but it allows you to debug problems with your stream and config files. See the 
+documentation for instructions on using this system.</p>
+
+<p><a href="#" onClick="clearTrace()">clear trace box</a></p>
+<form name="xtracef" id="xtracef" method="get" action="#">
+<textarea rows="20" cols="120" name="t"></textarea>
+</form>
+<hr />
+<div id="copyright">
+<p>&copy;2005-2007 Draftlight Networks.</p>
+</div>
+</body>
+</html>

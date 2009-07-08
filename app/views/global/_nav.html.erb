@@ -1,0 +1,9 @@
+<ul id="cat_menu">
+	<li id="cat_home"><%= link_to "Home", :controller => 'users', :action => 'index' %></li>
+	<li id="cat_photos"><%= link_to "Photos", :controller => 'photos', :action => 'index' %></li>
+	<li id="cat_music"><%= link_to "Music", :controller => 'music', :action => 'index' %></li>
+	<li id="cat_videos"><%= link_to "Videos", :controller => 'videos', :action => 'index' %></li>
+	<% if session[:username] %>
+	<li id="cat_prefs"><%= link_to "Prefs", :controller => 'users', :id => User.find(:first, :conditions => ["uname = ?",session[:username]])[:id], :action => 'edit' %></li>
+	<% end %>
+</ul>

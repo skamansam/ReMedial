@@ -1,0 +1,6 @@
+
+<%= form_tag :controller => "login", :action => "authenticate" %>
+Login: <%= text_field("loginform","user_name", :size => '20') %> 
+Password: <%= password_field("loginform","user_pwd", :size => '20') %>
+<input type="submit" value="Login!"/>
+</form>

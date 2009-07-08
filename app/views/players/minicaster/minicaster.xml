@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<config version="1T" xmlns="http://www.draftlight.net/dnex/config/ns/1T/">
+<mp3cast>
+  <mount>http://64.236.34.97:80/stream/1040</mount>
+  <nowplaying type="icecast" poll="30">http://10.1.0.3:8000/nowplaying.xsl</nowplaying>
+  <website>http://www.draftlight.net/dnex/</website>
+  <title>AngelRadio Icecast 10.1.0.3:8000</title>
+</mp3cast>
+<init autoplay="0" volume="80" reload="1" xfade="0" />
+</config>

@@ -1,0 +1,60 @@
+<h1>Listing users</h1>
+
+<table>
+  <tr>
+    <th>Uname</th>
+    <th>Pwd</th>
+    <th>Fname</th>
+    <th>Mname</th>
+    <th>Lname</th>
+    <th>Email</th>
+    <th>Homepage</th>
+    <th>Address1</th>
+    <th>Address2</th>
+    <th>Country</th>
+    <th>State</th>
+    <th>City</th>
+    <th>Zip</th>
+    <th>Phone</th>
+    <th>Cell</th>
+    <th>Avatar</th>
+    <th>Group</th>
+    <th>Dir</th>
+    <th>Permission</th>
+    <th>Created</th>
+  </tr>
+<% if @users %>
+<% @users.each do |user| %>
+  <tr>
+    <td><%=h user.uname %></td>
+    <td><%=h user.pwd %></td>
+    <td><%=h user.fname %></td>
+    <td><%=h user.mname %></td>
+    <td><%=h user.lname %></td>
+    <td><%=h user.email %></td>
+    <td><%=h user.homepage %></td>
+    <td><%=h user.address1 %></td>
+    <td><%=h user.address2 %></td>
+    <td><%=h user.country %></td>
+    <td><%=h user.state %></td>
+    <td><%=h user.city %></td>
+    <td><%=h user.zip %></td>
+    <td><%=h user.phone %></td>
+    <td><%=h user.cell %></td>
+    <td><%=h user.avatar %></td>
+    <td><%=h user.group %></td>
+    <td><%=h user.dir %></td>
+    <td><%=h user.permission %></td>
+    <td><%=h user.created %></td>
+    <td><%= link_to 'Show', user %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    <td><% if admin? %><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %><% end %></td>
+  </tr>
+<% end %>
+<% end %>
+</table>
+
+<br />
+<% if admin? %>
+<%= link_to 'New user', new_user_path %>
+<% end %>

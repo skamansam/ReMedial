@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  owner: 1
+  title: MyString
+  body: MyText
+  parent: 1
+  completed: 1
+  attachment: MyString
+  permission: MyString
+
+two:
+  owner: 1
+  title: MyString
+  body: MyText
+  parent: 1
+  completed: 1
+  attachment: MyString
+  permission: MyString

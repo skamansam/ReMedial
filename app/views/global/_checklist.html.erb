@@ -1,0 +1,115 @@
+
+<!-- global/_checklist.html.erb -->
+<% if session[:username]=='admin' %>
+<div id="about">
+    <h3><a href="rails/info/properties" onclick="about(); return false">About your application&rsquo;s environment</a></h3>
+    <div id="about-content" style="display: none">
+    </div>
+</div>
+<% end %>
+<div id="getting-started">
+    <p>
+        ReMedial is a web-based program used to manage your media. It can handle photos (html slideshow),
+        music(flash player) and videos (flash player) straight from your browser. It can also create playlists for use
+        in external players. As a design philosophy, I am keeping the database very small and using the filesystem for
+        playlists and upload.
+    </p>
+    <h1>Features Check List</h1>
+    <ol>
+        <li>
+            <label for="item1">
+                <input type="checkbox" checked="checked" disabled="disabled" id="item1"/>User Login System
+            </label>
+        </li>
+        <li>
+            <label for="item20">
+                <input type="checkbox" checked="checked" disabled="disabled" id="item20"/>Theme Support
+            </label>
+        </li>
+        <li>
+            <label for="item2">
+                <input type="checkbox" disabled="disabled" id="item2"/>Administration Interface
+            </label>
+        </li>
+        <li>
+            <label for="item3">
+                <input type="checkbox" disabled="disabled" id="item3"/>Group Hierarchy
+            </label>
+        </li>
+        <li>
+            <label for="item4">
+                <input type="checkbox" disabled="disabled" id="item4"/>Access Control List
+            </label>
+        </li>
+        <li>
+            <label for="item5">
+                <input type="checkbox" disabled="disabled" id="item5"/>User Home Directories
+            </label>
+        </li>
+        <li>
+            <label for="item6">
+                <input type="checkbox" disabled="disabled" id="item6"/>Music Manager
+            </label>
+        </li>
+        <li>
+            <label for="item7">
+                <input type="checkbox" disabled="disabled" id="item7"/>Video Manager
+            </label>
+        </li>
+        <li>
+            <label for="item8">
+                <input type="checkbox" disabled="disabled" id="item8"/>Photo Manager
+            </label>
+        </li>
+        <li>
+            <label for="item9">
+                <input type="checkbox" disabled="disabled" id="item9"/>Media Management
+            </label>
+        </li>
+        <li>
+            <label for="item10">
+                <input type="checkbox" disabled="disabled" id="item10"/>Playlist Management
+            </label>
+        </li>
+        <li>
+            <label for="item11">
+                <input type="checkbox" disabled="disabled" id="item11"/>Rating System
+            </label>
+        </li>
+        <li>
+            <label for="item12">
+                <input type="checkbox" disabled="disabled" id="item12"/>Support for:<a href="http://www.javazoom.net/applets/jlguiapplet/jlguiapplet.html">jlgui</a>, 
+                fs mp3 player, <a href="http://flash-mp3-player.net/">flash mp3 player</a>,
+            </label>
+        </li>
+    </ol>
+    <h1>Extra Features:</h1>
+    <ol>
+        <li>
+            <label for="item13">
+                <input type="checkbox" disabled="disabled" id="item13"/>List Manager
+            </label>
+        </li>
+        <li>
+            <label for="item14">
+                <input type="checkbox" disabled="disabled" id="item14"/>Use Jinzora Database
+            </label>
+        </li>
+        <li>
+            <label for="item15">
+                <input type="checkbox" disabled="disabled" id="item15"/>Use Coppermine Database
+            </label>
+        </li>
+        <li>
+            <label for="item16">
+                <input type="checkbox" disabled="disabled" id="item16"/>Use Gallery Database
+            </label>
+        </li>
+        <li>
+            <label for="item17">
+                <input type="checkbox" disabled="disabled" id="item17"/>Enable Downloading and searching for online and streaming music
+            </label>
+        </li>
+    </ol>
+</div>
+<!--/ global/_checklist.html.erb -->

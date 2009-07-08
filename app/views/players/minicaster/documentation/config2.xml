@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!-- this file shows the bare minimum needed to define and play an Icecast2 stream -->
+<config version="1T" xmlns="http://www.draftlight.net/dnex/config/ns/1T/">
+<mp3cast>
+  <mount>http://ware.catv.ext.ru:8137/etoradioplus128.mp3</mount>
+  <title>ETO Radio Plus : Russia</title>
+</mp3cast>
+<init autoplay="1" volume="80" reload="10" xfade="0" />
+</config>

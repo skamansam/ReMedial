@@ -1,0 +1,149 @@
+/* Deafult Theme
+ @Author: Skaman Sam Tyler
+ @Date: July 1st, 2009
+ @Description: This is the default theme for ReMedial.
+ */
+body {
+    margin: 5px 5px;
+    background-color: #4d4d4d;
+	font-size:12px;
+	font-family:"Courier New", Courier, monospace;
+}
+a{color:#333;text-decoration:none;}
+a:hover{text-decoration:underline;}
+#flash{color:#c00;
+}
+ #envelope {
+    margin: 0px auto;
+}
+.content-region{
+	border: solid 1px #000; 
+	border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+    background-color: #bfbfbf;
+	margin:5px;
+	padding:5px;
+}
+.content-header{
+	background-color:#666;
+	color:#ccc;
+	margin:-5px;
+	border-radius: 10px 10px 0px 0px;
+	-moz-border-radius: 10px 10px 0px 0px;
+	-webkit-border-radius: 10px 10px 0px 0px;
+	height:20px;
+	text-align:center;
+	vertical-align:middle;
+}
+ #header {
+    height: 140px;
+	margin:5px;
+	margin-top:0px;
+} #header_logo {
+    display: inline-block;
+    position: relative;
+    top: -10px;
+} #header_text {
+    display: inline-block;
+    margin-left: 30px;
+    margin-top: 30px;
+    vertical-align: top;
+    width: 300px;
+    height: 120px;
+} #header_name {
+    font-family: monospace;
+    font-size: 28pt;
+    font-weight: bold;
+    width: 100%;
+} #header_subtitle {
+    font-size: smaller;
+    padding-left: 80px;
+    width: 75%;
+} #login_nav {
+    display: inline-block;
+    width: 400px;
+    height: 100px;
+} #login_form {
+    /*width: 300px;*/
+    height: 20px;
+    padding: 0px 3px;
+    /*background-color: #333;
+    border: #333 inset 1px;*/
+	white-space:nowrap;
+	padding-top:2px;
+}
+#login_form input {
+    background-color: #CCCCCC;
+    border: medium none;
+    height: 16px;
+    padding: 0px;
+    line-height: 10px;
+    font-size: 10px;
+	margin: 0px;
+} 
+/*#login_form span{
+	height:20px;
+	margin-top:0px;
+}
+#login_form .img{
+	margin-top:0px;
+	height:20px;
+	vertical-align:middle;
+}*/
+#login_form .img input{
+	background-color:#666666;
+	margin-left:5px;
+	position:absolute;
+}
+#cat_menu {
+    display: inline-block;
+    padding: 0px;
+    margin: 0px;
+} #icon_nav {
+	display:inline-block;
+	text-align:center;
+	width:100%;
+} #icon_nav img {
+    width: 32px;
+}
+
+input {
+    color: #000;
+    border-color: #000;
+    background-color: #fff;
+} #cat_menu li {
+    display: inline-block;
+    width: 64px;
+    height: 100px;
+    overflow: hidden;
+} #cat_menu li a {
+    width: 64px;
+    display: block;
+    padding-top: 80px;
+	text-align:center;
+}
+ #cat_menu #cat_home {
+    background: url('/themes/default/images/icons/home.png') no-repeat 50% 50%;
+    vertical-align: baseline;
+}
+#cat_menu #cat_photos {
+    background: url('/themes/default/images/icons/photos.png') no-repeat 50% 50%;
+    vertical-align: baseline;
+}
+#cat_menu #cat_music {
+    background: url('/themes/default/images/icons/music.png') no-repeat 50% 50%;
+    vertical-align: baseline;
+}
+#cat_menu #cat_videos {
+    background: url('/themes/default/images/icons/movies.png') no-repeat 50% 50%;
+    vertical-align: baseline;
+}
+#cat_menu #cat_prefs {
+    background: url('/themes/default/images/icons/preferences.png') no-repeat 50% 50%;
+    vertical-align: baseline;
+}
+
+#content{
+	padding-top:0px;
+}

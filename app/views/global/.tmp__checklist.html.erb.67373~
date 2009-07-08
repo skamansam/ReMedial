@@ -1,0 +1,111 @@
+<div id="header">
+    <h1>ReMedial</h1>
+    <h2>Any media. Anywhere.</h2>
+</div>
+<% if session[:username]=='admin' %>
+<div id="about">
+    <h3><a href="rails/info/properties" onclick="about(); return false">About your application&rsquo;s environment</a></h3>
+    <div id="about-content" style="display: none">
+    </div>
+</div>
+<% end %>
+<div id="getting-started">
+    <p>
+        ReMedial is a web-based program used to manage your media. It can handle photos (html slideshow),
+        music(flash player) and videos (flash player) straight from your browser. It can also create playlists for use
+        in external players. As a design philosophy, I am keeping the database very small and using the filesystem for
+        playlists and upload.
+    </p>
+    <h1>Features Check List</h1>
+    <ol>
+        <li>
+            <label for="item1">
+                <input type="checkbox" checked="checked" disabled="true" id="item1"/>User Login System
+            </label>
+        </li>
+        <li>
+            <label for="item2">
+                <input type="checkbox" disabled="true" id="item2"/>Administration Interface
+            </label>
+        </li>
+        <li>
+            <label for="item3">
+                <input type="checkbox" disabled="true" id="item3"/>Group Hierarchy
+            </label>
+        </li>
+        <li>
+            <label for="item4">
+                <input type="checkbox" disabled="true" id="item4"/>Access Control List
+            </label>
+        </li>
+        <li>
+            <label for="item5">
+                <input type="checkbox" disabled="true" id="item5"/>User Home Directories
+            </label>
+        </li>
+        <li>
+            <label for="item13">
+                <input type="checkbox" disabled="true" id="item13"/>Music Manager
+            </label>
+        </li>
+        <li>
+            <label for="item13">
+                <input type="checkbox" disabled="true" id="item13"/>Video Manager
+            </label>
+        </li>
+        <li>
+            <label for="item13">
+                <input type="checkbox" disabled="true" id="item13"/>Photo Manager
+            </label>
+        </li>
+        <li>
+            <label for="item6">
+                <input type="checkbox" disabled="true" id="item6"/>Media Management
+            </label>
+        </li>
+        <li>
+            <label for="item12">
+                <input type="checkbox" disabled="true" id="item12"/>Playlist Management
+            </label>
+        </li>
+        <li>
+            <label for="item7">
+                <input type="checkbox" disabled="true" id="item7"/>Rating System
+            </label>
+        </li>
+        <li>
+            <label for="item20">
+                <input type="checkbox" disabled="true" id="item20"/>Support for:<a href="http://www.javazoom.net/applets/jlguiapplet/jlguiapplet.html">jlgui</a>, 
+                fs mp3 player, <a href="http://flash-mp3-player.net/">flash mp3 player</a>,
+            </label>
+        </li>
+    </ol>
+    <h1>Extra Features:</h1>
+    <ol>
+        <li>
+            <label for="item8">
+                <input type="checkbox" disabled="true" id="item8"/>List Manager
+            </label>
+        </li>
+        <li>
+            <label for="item9">
+                <input type="checkbox" disabled="true" id="item9"/>Use Jinzora Database
+            </label>
+        </li>
+        <li>
+            <label for="item10">
+                <input type="checkbox" disabled="true" id="item10"/>Use Coppermine Database
+            </label>
+        </li>
+        <li>
+            <label for="item11">
+                <input type="checkbox" disabled="true" id="item11"/>Use Gallery Database
+            </label>
+        </li>
+        <li>
+            <label for="item19">
+                <input type="checkbox" disabled="true" id="item19"/>Enable Downloading and searching for online and streaming music
+            </label>
+        </li>
+    </ol>
+</div>

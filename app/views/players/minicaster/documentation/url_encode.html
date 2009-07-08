@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>URL Encoder Utility</title>
+<style type="text/css">
+body {
+        background: #b0b0ff;
+        color: #000;
+}
+.links {
+	text-align: center;
+}
+a {
+        color: #600000;
+        text-decoration: underline;
+}
+.samplecode {
+        white-space: pre;
+        color: #000090;
+        font-family: courier;
+}
+</style>
+<script type="text/javascript">
+function encode() {
+	var obj = document.getElementById('urlencoder');
+	var unencoded = obj.value;
+	obj.value = escape(unencoded);
+}
+function decode() {
+	var obj = document.getElementById('urlencoder');
+	var encoded = obj.value;
+	obj.value = unescape(encoded.replace(/\+/g," "));
+}
+</script>
+</head>
+<body>
+<h1><a href="INSTRUCTIONS.html">Minicaster Instructions</a> : URL Encoder</h1>
+
+<p>
+This form encodes or decodes a URL for use in an XSPF or XML file, or to define the 
+contents of a flashVars parameter. You need JavaScript enabled to use this page. No data is 
+sent outside your computer.
+</p>
+
+<form onsubmit="return false;">
+<input type="text" size="80" id="urlencoder" />
+<br />
+<input type="button" onclick="encode()" value="Encode"><input type="button" onclick="decode()" value="Decode">
+
+<hr />
+<div class="links">
+<a href="INSTRUCTIONS.html">INSTRUCTIONS</a> :: 
+<a href="EULA.html">EULA</a> :: 
+<a href="CONFIG.html">CONFIG FILES</a> :: 
+<a href="ADVANCED.html">Advanced Topics</a> :: 
+<a href="ER.html">extendedReporting Engine</a> :: 
+<a href="../EXAMPLE.html">EXAMPLE</a>
+<p>
+<a href="http://www.draftlight.net/dnex/minicaster/">All content &copy;2005-2007 Draftlight 
+Networks all rights reserved</a>.</p>
+</div>
+</body>
+</html>

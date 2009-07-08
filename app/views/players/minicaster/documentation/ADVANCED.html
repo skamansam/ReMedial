@@ -1,0 +1,178 @@
+<html>
+<head>
+<title>FMP256 Flash Audio playhead - Minicaster FREE INSTRUCTIONS</title>
+<style type="text/css">
+body {
+        background: #b0b0ff;
+        color: #000;
+}
+.links {
+        text-align: center;
+}
+a {
+        color: #600000;
+        text-decoration: underline;
+}
+.samplecode {
+        white-space: pre;
+        color: #000090;
+        font-family: courier;
+}
+</style>
+</head>
+<body>
+<h1>Instructions : DNeX Flash Audio playhead : Minicaster FREE</h1>
+
+<h2>ADVANCED INSTRUCTIONS</h2>
+<p>
+The following instructions are normally not required for basic use of the playhead. 
+users wishing to change some of the default settings should read on..
+</p>
+<h3>Changing the configuration file during the page load operation</h3>
+<p>
+By default, the playhead looks for a file called 'XXX.xml' where XXX is the player's 
+own filename. If you generate your configuration files dynamically using PHP or ASP, then 
+you will need to tell the playhead to load this new URL. This can be done by adding a special 
+variable to the page code, both in the OBJECT and the EMBED tags. If we wanted to tell 
+'player01.swf' to open a configuration file called 'dynamic.php', then you need to add 
+this line to the OBJECT param list:-
+<br /><br />
+ &lt;param name="flashVars" value="config=dynamic.php" /&gt;
+<br /><br />
+and in the EMBED tag, add the variable definition
+<br /><br />
+  flashVars="config=dynamic.php"
+<br /><br />
+You can specify any filename, but if you wish to use a URL containing non-alphabetical 
+characters you MUST URLencode the name using RFC2396. For example, if your configuration 
+file is at
+<br /><br />
+	http://www.myfiles.com/radioplayhead/config.php?music=madonna
+<br /><br />
+then the URLencoded version is
+<br /><br />
+	http%3A//www.myfiles.com/radioplayhead/config.php%3Fmusic%3Dmadonna
+<br /><br />
+There is a simple JavaScript encoder-decoder <a href="url_encode.html">HERE</a>.
+</p>
+<a name="cdpf"><h3>Cross-Domain Policy Files</h3></a>
+<p>
+With Flash Player 7 and above, enhanced security prevents a Flash document from loading 
+data (XML files) from another website unless that site has given permission. This means 
+that a <u>remote</u> server hosting your configuration file must also publish a small 
+XML file called "crossdomain.xml", that informs the Flash Player that they allow others 
+to read their data. If this file is missing, Minicaster will display an error.
+</p>
+<p>
+This is only a concern where the config file or a DNAS playlist is on a different website 
+domain to your SWF playhead. If they are on the same domain, then a policy file is not 
+needed.
+</p>
+<p>For example, if our playhead is at 
+<br /><br />
+http://www.mysite.com/users.smith/minicaster.swf
+<br /><br />
+Then it tries to load a configuration file from
+<ul>
+<li>http://www.othersite.com/config.xml - <strong>Policy file is needed</strong></li>
+<li>http://mysite.com/config.xml - <strong>Policy file is needed</strong></li>
+<li>http://123.456.789.0/config.xml - <strong>Policy file is needed, even if this points to www.mysite.com</strong></li>
+<li>http://www.mysite.com/config.xml - <strong>Policy file is NOT needed</strong></li>
+</ul>
+<p>
+Policy files are not needed to access MP3 data. For more 
+information on the format of a Policy file, <a href="http://www.adobe.com/go/tn_14213">CLICK HERE</a>.</p>
+
+<h2>Dynamically controlling the playhead with JavaScript</h2>
+<p>
+This playhead supports live updates to the config file location, to allow changes without a page refresh. To implement 
+live updates and also play-pause control, add the following JavaScript to your page AFTER the Flash object:-
+</p>
+<div class="samplecode">
+&lt;script language="JavaScript"&gt;
+&lt;!--
+    function getFMP256(_swf) {
+	return (navigator.appName.indexOf("Microsoft") != -1)? window[_swf]:document[_swf];
+    }
+    function setconfig(_href) {
+	getFMP256("fmp256").setconfig(_href);
+    }
+    function toggleplay() {
+	getFMP256("fmp256").play();
+    }
+// --&gt;
+&lt;/script&gt;
+</div>
+<p>
+To change the config file, an HTML hyperlink is used with a JavaScript event connected to the click, as below:-
+</p>
+<div class="samplecode">
+&lt;a href="#" onClick="setconfig('http://config.file/name.xml')"&gt;Change webcast&lt;/a&gt;
+</div>
+<p>You can toggle the play button (play-pause-play) using the second function, for example:-
+</p>
+<div class="samplecode">
+&lt;a href="#" onClick="toggleplay()"&gt;Play/pause music&lt;/a&gt;
+</div>
+<h2>Using Minicaster with a Shoutcast DNAS cluster</h2>
+<p>
+It is perfectly possible to deliver a Shoutcast stream to our playhead, however there are some important issues that you 
+must be aware of that will limit the playhead's operation:-
+</p>
+<p>Firstly, Flash Player cannot connect to the 'root' of a Shoutcast server, as it is not possible to change the browser 
+agent string passed by the plugin. Shoutcast uses this agent string to decide what is to be sent - if the agent string is 
+a web browser, Shoutcast sends the server status page. If the agent string isn't a web browser it sends the MP3 stream. The 
+user agent string cannot be changed in Flash Player - it is a security feature and is impossible to bypass. As a result if 
+the server receives a connection to the root, it will not send the MP3 stream to Minicaster. If your Shoutcast server uses 
+a folder name in the stream, then it will connect perfectly.
+<p>For example if your Shoutcast server's stream is linked to:-
+<div class="samplecode">
+http://my.shoutcast.xx:8000
+</div>
+then Minicaster will be unable to play the stream. If instead it is linked to:-
+<div class="samplecode">
+http://my.shoutcast.xx:8000/myradiostation
+</div>
+then Minicaster will play the stream. The server port number (in this case 8000) has no impact on this process, it is 
+the presence of a folder name (such as 'myradiostation') that makes all the difference. This is not an issue with 
+Icecast2 as the status pages for Icecast2 are only supplied if specifically requested by the browser.</p>
+<p>
+<strong>It is impossible to collect the DNAS playlist file directly from Shoutcast, as there is no way for a Shoutcast server to 
+send the 'crossdomain.xml' security policy file to Flash.</strong> It is possible to use a proxy script to pass the data through 
+a normal webserver or to simply place a copy of the DNAS playlist file on another website and use that. Of course the webserver 
+that runs your proxy script or hosts the DNAS playlist file has to contain the crossdomain.xml policy file as well, and in 
+this case it must be available at the top level.</p>
+<p>
+For example, suppose we have a Shoutcast stream running on a network of servers, all of which use a folder name so don't hit the 
+problem we described above. We also have a 'normal' website at http://www.radio.com<br />
+<br />
+We can collect the audio data OK, as it's got a folder name. We can put a copy of the DNAS playlist on the website and we can 
+put the policy file online at http://www.radio.com/crossdomain.xml - so the config file ends up looking 
+something like this:-
+</p>
+<div class="samplecode">
+&lt;?xml version="1.0" encoding="iso-8859-1" ?&gt;
+&lt;config version="1s" xmlns="http://www.draftlight.net/dnex/config/ns/0/"&gt;
+&lt;mp3cast&gt;
+  &lt;playlist&gt;http://www.radio.com/listen.pls&lt;/playlist&gt;
+  &lt;website&gt;http://www.radio.com/&lt;/website&gt;
+  &lt;title&gt;Title of my radio station&lt;/title&gt;
+&lt;/mp3cast&gt;
+&lt;init autoplay="0" volume="80" reload="10" xfade="1" /&gt;
+&lt;/config&gt;
+</div>
+
+<hr />
+<div class="links">
+<a href="INSTRUCTIONS.html">INSTRUCTIONS</a> :: 
+<a href="EULA.html">EULA</a> :: 
+<a href="CONFIG.html">CONFIG FILES</a> :: 
+<a href="ADVANCED.html">Advanced Topics</a> :: 
+<a href="ER.html">extendedReporting Engine</a> :: 
+<a href="../EXAMPLE.html">EXAMPLE</a>
+<p>
+<a href="http://www.draftlight.net/dnex/minicaster/">All content &copy;2005-2007 Draftlight 
+Networks all rights reserved</a>.</p>
+</div>
+</body>
+</html>
